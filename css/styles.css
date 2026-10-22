@@ -1,0 +1,397 @@
+/* =========================================================
+   Ruleta de premios — estilos
+   Los colores y la fuente NO se cambian aquí: se definen en
+   CONFIG (js/script.js), que rellena estas variables CSS.
+   Los valores de abajo son solo un respaldo.
+   ========================================================= */
+:root {
+  --color-fondo: #13233f;
+  --color-navbar: #0a1528;
+  --color-texto-navbar: #ffffff;
+  --color-puntero: #ffffff;
+  --color-boton: #0acf41;
+  --color-texto-boton: #0a1528;
+  --color-centro: #ffffff;
+  --color-popup-fondo: #ffffff;
+  --color-popup-texto: #0a1528;
+  --color-popup-acento: #f16529;
+  --fuente: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+
+  /* Tamaños calculados */
+  --alto-pantalla: 100vh;
+  --alto-navbar: clamp(56px, 8vh, 84px);
+  /* La rueda ocupa lo que permita el alto (restando navbar y botón) o el ancho */
+  --tamano-rueda: min(
+    92vw,
+    calc(var(--alto-pantalla) - var(--alto-navbar) - 9rem),
+    1400px
+  );
+}
+
+/* En celulares, 100vh incluye la barra de direcciones; dvh mide solo lo visible */
+@supports (height: 100dvh) {
+  :root {
+    --alto-pantalla: 100dvh;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Táctil: sin zoom por doble toque ni destello azul al tocar botones */
+button {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* La página nunca debe desplazarse: en algunos celulares (p. ej. Safari en iPhone)
+   no basta con ocultar el desbordamiento solo en body */
+html {
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+body {
+  height: var(--alto-pantalla);
+  width: 100%;
+  overscroll-behavior: none;
+  background: var(--color-fondo);
+  color: var(--color-texto-navbar);
+  font-family: var(--fuente);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Barra de navegación ===== */
+.navbar {
+  height: var(--alto-navbar);
+  flex-shrink: 0;
+  background: var(--color-navbar);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(12px, 3vw, 40px);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+  z-index: 10;
+}
+
+.navbar__marca {
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 1.5vw, 20px);
+  min-width: 0;
+}
+
+.navbar__logo {
+  height: calc(var(--alto-navbar) - 8px);
+  width: auto;
+  display: block;
+}
+
+.navbar__texto {
+  color: var(--color-texto-navbar);
+  font-size: clamp(0.95rem, 2vw, 1.5rem);
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-left: clamp(8px, 1.5vw, 20px);
+  border-left: 2px solid rgba(255, 255, 255, 0.25);
+}
+
+.navbar__acciones {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-icono {
+  width: clamp(38px, 5vh, 48px);
+  height: clamp(38px, 5vh, 48px);
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-texto-navbar);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-icono[hidden] {
+  display: none;
+}
+.btn-icono:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ===== Zona principal ===== */
+.principal {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 3vh, 2rem);
+  padding: 1rem;
+}
+
+/* ===== Rueda ===== */
+.rueda {
+  position: relative;
+  width: var(--tamano-rueda);
+  height: var(--tamano-rueda);
+  touch-action: none; /* necesario para arrastrar con el dedo */
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: grab;
+}
+.rueda.arrastrando {
+  cursor: grabbing;
+}
+.rueda img {
+  -webkit-user-drag: none;
+} /* evita arrastrar la imagen del logo */
+
+.rueda__canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 50%;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.45));
+  will-change: transform;
+}
+
+/* Puntero: triángulo fijo en la parte superior, apuntando hacia abajo.
+   La forma va en ::before (clip-path) y la sombra en el contenedor,
+   porque clip-path recortaría la sombra si estuvieran en el mismo elemento. */
+.rueda__puntero {
+  position: absolute;
+  top: calc(var(--tamano-rueda) * -0.035);
+  left: 50%;
+  width: calc(var(--tamano-rueda) * 0.08);
+  height: calc(var(--tamano-rueda) * 0.1);
+  transform: translateX(-50%);
+  transform-origin: 50% 20%;
+  filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.5));
+  z-index: 3;
+  pointer-events: none;
+}
+.rueda__puntero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--color-puntero);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+/* Pequeño golpe del puntero en cada tic (la dirección depende del giro) */
+.rueda__puntero.golpe-horario {
+  animation: golpe-horario 0.12s ease-out;
+}
+.rueda__puntero.golpe-antihorario {
+  animation: golpe-antihorario 0.12s ease-out;
+}
+@keyframes golpe-horario {
+  40% {
+    transform: translateX(-50%) rotate(-14deg);
+  }
+}
+@keyframes golpe-antihorario {
+  40% {
+    transform: translateX(-50%) rotate(14deg);
+  }
+}
+
+/* Círculo blanco central con el logo (no gira) */
+.rueda__centro {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 26%;
+  height: 26%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: var(--color-centro);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 0 0 calc(var(--tamano-rueda) * 0.008) rgba(0, 0, 0, 0.15),
+    0 4px 16px rgba(0, 0, 0, 0.35);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.rueda__logo {
+  width: 72%;
+  height: 72%;
+  object-fit: contain;
+}
+
+/* ===== Botón Girar ===== */
+.btn-girar {
+  background: var(--color-boton);
+  color: var(--color-texto-boton);
+  font-family: var(--fuente);
+  font-size: clamp(1.1rem, 2.6vh, 1.6rem);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 15px;
+  padding: 0.65em 2.25em;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  transition:
+    transform 0.15s,
+    filter 0.15s,
+    opacity 0.2s;
+}
+.btn-girar:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+.btn-girar:active:not(:disabled) {
+  transform: translateY(1px);
+}
+.btn-girar:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ===== Pop-up de resultado ===== */
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 10, 20, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  overflow: hidden; /* nada del pop-up (ni su animación) puede generar scroll */
+  z-index: 50; /* el confeti se dibuja por encima (z-index 1000) */
+  animation: aparecer 0.25s ease-out;
+}
+.popup[hidden] {
+  display: none;
+}
+
+.popup__caja {
+  background: var(--color-popup-fondo);
+  color: var(--color-popup-texto);
+  /* Ocupa el ancho disponible dentro del margen de .popup, con un máximo.
+     Se evita "vw" porque en algunos celulares no coincide con el ancho visible. */
+  width: 100%;
+  max-width: 520px;
+  min-width: 0;
+  max-height: calc(var(--alto-pantalla) - 2rem);
+  overflow-x: hidden;
+  overflow-y: auto;
+  overflow-wrap: anywhere; /* textos largos de premios se parten en vez de desbordar */
+  border-radius: 15px;
+  padding: clamp(1.5rem, 4vh, 2.75rem) clamp(1.25rem, 4vw, 2.5rem);
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: entrar 0.35s cubic-bezier(0.2, 1.4, 0.4, 1);
+}
+
+.popup__icono {
+  font-size: clamp(2.5rem, 7vh, 4rem);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+/* Los tamaños dependen del alto y también del ancho, para no desbordar en celulares angostos */
+.popup__titulo {
+  font-size: clamp(1.4rem, min(4.5vh, 8vw), 2.6rem);
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+.popup__texto {
+  font-size: clamp(0.95rem, min(2.4vh, 4.5vw), 1.25rem);
+  line-height: 1.45;
+  opacity: 0.85;
+}
+.popup__premio {
+  color: var(--color-popup-acento);
+  font-size: clamp(1.3rem, min(4.5vh, 7.5vw), 2.4rem);
+  line-height: 1.2;
+  font-weight: 800;
+  margin-top: 0.25rem;
+}
+.popup__premio:empty {
+  display: none;
+}
+.popup__cerrar {
+  margin-top: clamp(1.25rem, 3vh, 2rem);
+  max-width: 100%;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes entrar {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+}
+
+/* ===== Responsive ===== */
+
+/* Celulares en vertical */
+@media (max-width: 600px) {
+  :root {
+    --tamano-rueda: min(
+      94vw,
+      calc(var(--alto-pantalla) - var(--alto-navbar) - 8rem)
+    );
+  }
+  .navbar__texto {
+    font-size: 0.9rem;
+  }
+  .btn-girar {
+    padding: 0.8em 2.4em;
+  }
+}
+
+/* Celulares muy angostos: se reduce el espacio del eslogan */
+@media (max-width: 360px) {
+  .navbar__texto {
+    font-size: 0.8rem;
+    padding-left: 8px;
+  }
+}
+
+/* Pantallas bajas en horizontal (celular acostado): rueda a la izquierda,
+   botón a la derecha, para aprovechar el ancho */
+@media (orientation: landscape) and (max-height: 520px) {
+  :root {
+    --alto-navbar: 48px;
+    --tamano-rueda: min(
+      calc(var(--alto-pantalla) - var(--alto-navbar) - 2.5rem),
+      62vw
+    );
+  }
+  .principal {
+    flex-direction: row;
+    gap: clamp(1.5rem, 5vw, 3rem);
+    padding-top: 1.5rem; /* espacio para el puntero que sobresale arriba */
+  }
+  .btn-girar {
+    padding: 0.8em 1.8em;
+  }
+  .popup__icono {
+    font-size: 2rem;
+  }
+  .popup__titulo {
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,14 @@
+# ===== Archivos de Claude Code (no forman parte de la ruleta) =====
+
+# Instrucciones y requisitos para Claude (en la raíz y en subcarpetas)
+CLAUDE.md
+CLAUDE.local.md
+**/CLAUDE.md
+**/CLAUDE.local.md
+PROMPT.md
+
+# Configuración local de Claude Code (permisos, ajustes, comandos)
+.claude/
+
+# Configuración de servidores MCP
+.mcp.json
