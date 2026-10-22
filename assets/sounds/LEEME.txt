@@ -3,7 +3,7 @@ Sonidos de la ruleta (se configuran en js/script.js):
 - tick.mp3  → tic al pasar cada sección por el puntero (CONFIG.sonidos.tick)
 - win.mp3   → premio "30% de descuento"
 - win-2.mp3 → premio "20% de descuento"
-- win-3.mp3 → premios "10% de descuento" y "Servicio gratis"
+- win-3.mp3 → premios "10% de descuento" y "Producto sorpresa"
 - lose.mp3  → "Sigue intentando"
 
 Cada sección de CONFIG.secciones tiene su propio campo "sonido", así que

@@ -78,7 +78,7 @@ Pesos configurados de ejemplo (suman 100, unas 40 posibilidades de ganar de cada
 | 10% de descuento | 14 |
 | 20% de descuento | 10 |
 | 30% de descuento | 6 |
-| Servicio gratis | 10 |
+| Producto sorpresa | 10 |
 | Sigue intentando (cada una de las 4) | 15 |
 
 **Comprobar las probabilidades:** abre la consola del navegador (F12) y escribe `probarPesos(10000)`. Verás una tabla con el porcentaje real de cada sección en 10 000 sorteos simulados.
@@ -87,11 +87,11 @@ Pesos configurados de ejemplo (suman 100, unas 40 posibilidades de ganar de cada
 
 Reemplaza los archivos de `assets/img/` o cambia las rutas en `CONFIG.logos`:
 
-- `logo-rueda.svg`: centro de la rueda. Idealmente cuadrado y con fondo transparente.
-- `logo-nav.svg`: barra de navegación. La barra es oscura, así que el logo debe verse bien sobre fondo oscuro.
+- `logo-rueda.png`: centro de la rueda. Idealmente cuadrado; las esquinas se recortan en círculo.
+- `logo-nav.png`: barra de navegación. Con fondo transparente se integra mejor con el color de la barra.
 - `logo-favicon.png`: icono de la pestaña del navegador.
 
-Se aceptan `.svg`, `.png`, `.jpg` y `.webp`. Las rutas son relativas a `index.html`, por eso empiezan con `assets/`.
+Se aceptan `.svg`, `.png`, `.jpg` y `.webp`. Para pantallas grandes conviene usar SVG o PNG de buena resolución. Las rutas son relativas a `index.html`, por eso empiezan con `assets/`.
 
 ### Sonidos
 
@@ -99,15 +99,15 @@ Los archivos están en `assets/sounds/`. Si `CONFIG.sonidos.tick` está vacío o
 
 ### Colores
 
-La paleta incluida está basada en los colores del logo y se cambia en `CONFIG.colores`:
+La paleta actual se cambia en `CONFIG.colores`:
 
 | Elemento | Color |
 |---|---|
-| Fondo de la página | `#13233F` |
-| Barra de navegación | `#0A1528` |
-| Secciones de premio | `#F16529` |
-| Secciones "Sigue intentando" | `#1F7FB8` |
-| Borde de la rueda y botón Girar | `#0ACF41` |
+| Fondo de la página | `#ffd0db` |
+| Barra de navegación | `#b3596e` |
+| Secciones de premio | `#b4344a` |
+| Secciones "Sigue intentando" y botón Girar | `#8faf26` |
+| Borde de la rueda | `#5F6D33` |
 | Círculo central y puntero | `#FFFFFF` |
 
 ## Dependencias
