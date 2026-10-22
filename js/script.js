@@ -17,7 +17,7 @@
 const CONFIG = {
   // ----- Textos generales -----
   tituloPagina: "Ruleta de premios",
-  textoNavbar: "¡Gira y gana!",      // eslogan junto al logo ("" para ocultarlo)
+  textoNavbar: "¡Gira y gana!", // eslogan junto al logo ("" para ocultarlo)
   textoBotonGirar: "Girar",
   // Textos de ayuda de los botones de la barra (se ven al pasar el mouse)
   etiquetas: {
@@ -31,8 +31,8 @@ const CONFIG = {
   // Todas las rutas de CONFIG (logos y sonidos) son relativas a index.html,
   // no a esta carpeta js/: por eso empiezan con "assets/".
   logos: {
-    navbar: "assets/img/logo-nav.svg",
-    rueda: "assets/img/logo-rueda.svg",
+    navbar: "assets/img/logo-nav.png",
+    rueda: "assets/img/logo-rueda.png",
     favicon: "assets/img/logo-favicon.png",
   },
 
@@ -44,49 +44,90 @@ const CONFIG = {
   //   peso:   probabilidad relativa (no hace falta que sumen 100)
   //   sonido: archivo que suena al caer en esta sección ("" = sin sonido)
   secciones: [
-    { texto: "10% de descuento", tipo: "premio",  peso: 14, sonido: "assets/sounds/win-3.mp3" },
-    { texto: "Sigue intentando", tipo: "intento", peso: 15, sonido: "assets/sounds/lose.mp3" },
-    { texto: "20% de descuento", tipo: "premio",  peso: 10, sonido: "assets/sounds/win-2.mp3" },
-    { texto: "Sigue intentando", tipo: "intento", peso: 15, sonido: "assets/sounds/lose.mp3" },
-    { texto: "30% de descuento", tipo: "premio",  peso: 6,  sonido: "assets/sounds/win.mp3" },
-    { texto: "Sigue intentando", tipo: "intento", peso: 15, sonido: "assets/sounds/lose.mp3" },
-    { texto: "Servicio gratis",  tipo: "premio",  peso: 10, sonido: "assets/sounds/win-3.mp3" },
-    { texto: "Sigue intentando", tipo: "intento", peso: 15, sonido: "assets/sounds/lose.mp3" },
+    {
+      texto: "10% de descuento",
+      tipo: "premio",
+      peso: 14,
+      sonido: "assets/sounds/win-3.mp3",
+    },
+    {
+      texto: "Sigue intentando",
+      tipo: "intento",
+      peso: 15,
+      sonido: "assets/sounds/lose.mp3",
+    },
+    {
+      texto: "20% de descuento",
+      tipo: "premio",
+      peso: 10,
+      sonido: "assets/sounds/win-2.mp3",
+    },
+    {
+      texto: "Sigue intentando",
+      tipo: "intento",
+      peso: 15,
+      sonido: "assets/sounds/lose.mp3",
+    },
+    {
+      texto: "30% de descuento",
+      tipo: "premio",
+      peso: 6,
+      sonido: "assets/sounds/win.mp3",
+    },
+    {
+      texto: "Sigue intentando",
+      tipo: "intento",
+      peso: 15,
+      sonido: "assets/sounds/lose.mp3",
+    },
+    {
+      texto: "Producto sorpresa",
+      tipo: "premio",
+      peso: 10,
+      sonido: "assets/sounds/win-3.mp3",
+    },
+    {
+      texto: "Sigue intentando",
+      tipo: "intento",
+      peso: 15,
+      sonido: "assets/sounds/lose.mp3",
+    },
   ],
 
   // ----- Pop-up de resultado -----
   popup: {
     tituloPremio: "¡Felicidades!",
-    textoPremio: "Ganaste:",                 // se muestra seguido del premio
+    textoPremio: "Ganaste:", // se muestra seguido del premio
     tituloIntento: "¡Sigue intentando!",
-    textoIntento: "Esta vez no hubo suerte, pero la próxima puede ser la tuya. ¡Gracias por participar!",
+    textoIntento:
+      "Esta vez no hubo suerte, pero la próxima puede ser la tuya. ¡Gracias por participar!",
     textoBotonCerrar: "Cerrar",
-    iconoPremio: "🎉",                       // emoji sobre el título ("" para ninguno)
+    iconoPremio: "🎉", // emoji sobre el título ("" para ninguno)
     iconoIntento: "🍀",
-    retraso: 400,                            // ms entre que la rueda se detiene y aparece el pop-up
+    retraso: 400, // ms entre que la rueda se detiene y aparece el pop-up
   },
 
   // ----- Sonidos -----
   sonidos: {
     activadoAlInicio: true,
-    tick: "assets/sounds/tick.mp3",  // "" = tic generado con Web Audio API
-    volumen: 0.8,                    // 0 a 1
+    tick: "assets/sounds/tick.mp3", // "" = tic generado con Web Audio API
+    volumen: 0.8, // 0 a 1
   },
 
   // ----- Colores -----
   colores: {
-    fondoPagina: "#13233F",
-    navbar: "#0A1528",
+    fondoPagina: "#ffd4de",
+    navbar: "#d17086",
     textoNavbar: "#FFFFFF",
-    seccionPremio: "#F16529",     // las 4 secciones de premio
-    seccionIntento: "#1F7FB8",    // las 4 secciones de "Sigue intentando"
+    seccionPremio: "#ca4a66", // las 4 secciones de premio
+    seccionIntento: "#8faf26", // las 4 secciones de "Sigue intentando"
     textoSecciones: "#FFFFFF",
     separadores: "rgba(255, 255, 255, 0.35)", // líneas entre secciones
-    bordeRueda: "#0ACF41",
-    puntosBorde: "rgba(255, 255, 255, 0.9)",  // puntos decorativos sobre el borde
+    bordeRueda: "#636e3b",
+    puntosBorde: "rgba(255, 255, 255, 0.9)", // puntos decorativos sobre el borde
     circuloCentral: "#FFFFFF",
     puntero: "#FFFFFF",
-    boton: "#0ACF41",
+    boton: "#abce39",
     textoBoton: "#0A1528",
     popupFondo: "#FFFFFF",
     popupTexto: "#0A1528",
@@ -99,25 +140,25 @@ const CONFIG = {
 
   // ----- Proporciones de la rueda (relativas al radio) -----
   rueda: {
-    grosorBorde: 0.07,     // grosor del borde exterior
-    tamanoTexto: 0.075,    // tamaño de letra de las secciones
+    grosorBorde: 0.07, // grosor del borde exterior
+    tamanoTexto: 0.075, // tamaño de letra de las secciones
   },
 
   // ----- Giro con el botón -----
   giro: {
-    vueltasMin: 5,         // vueltas completas mínimas antes de detenerse
-    vueltasMax: 7,         // vueltas completas máximas
-    duracion: 5500,        // duración del giro en milisegundos
+    vueltasMin: 5, // vueltas completas mínimas antes de detenerse
+    vueltasMax: 7, // vueltas completas máximas
+    duracion: 5500, // duración del giro en milisegundos
   },
 
   // ----- Giro arrastrando (mouse o dedo) -----
   // La fuerza del deslizamiento decide cuántas vueltas da y con qué velocidad arranca.
   arrastre: {
-    velocidadMinima: 250,  // °/s: un deslizamiento más lento no cuenta como giro
+    velocidadMinima: 250, // °/s: un deslizamiento más lento no cuenta como giro
     velocidadMaxima: 2500, // °/s: a partir de aquí se considera fuerza máxima
-    vueltasMin: 3,         // vueltas con el deslizamiento más suave
-    vueltasMax: 10,        // vueltas con el deslizamiento más fuerte
-    duracionMin: 3500,     // límites de duración del giro en milisegundos
+    vueltasMin: 3, // vueltas con el deslizamiento más suave
+    vueltasMax: 10, // vueltas con el deslizamiento más fuerte
+    duracionMin: 3500, // límites de duración del giro en milisegundos
     duracionMax: 8000,
   },
 };
@@ -199,7 +240,8 @@ function dibujarRueda() {
     ctx.moveTo(centro, centro);
     ctx.arc(centro, centro, radioSecciones, a0, a0 + angulo);
     ctx.closePath();
-    ctx.fillStyle = seccion.tipo === "premio" ? c.seccionPremio : c.seccionIntento;
+    ctx.fillStyle =
+      seccion.tipo === "premio" ? c.seccionPremio : c.seccionIntento;
     ctx.fill();
   });
 
@@ -210,7 +252,10 @@ function dibujarRueda() {
     const a = inicio + i * angulo;
     ctx.beginPath();
     ctx.moveTo(centro, centro);
-    ctx.lineTo(centro + Math.cos(a) * radioSecciones, centro + Math.sin(a) * radioSecciones);
+    ctx.lineTo(
+      centro + Math.cos(a) * radioSecciones,
+      centro + Math.sin(a) * radioSecciones,
+    );
     ctx.stroke();
   });
 
@@ -220,13 +265,19 @@ function dibujarRueda() {
     const a = inicio + i * angulo;
     const r = radio - grosorBorde / 2;
     ctx.beginPath();
-    ctx.arc(centro + Math.cos(a) * r, centro + Math.sin(a) * r, grosorBorde * 0.2, 0, Math.PI * 2);
+    ctx.arc(
+      centro + Math.cos(a) * r,
+      centro + Math.sin(a) * r,
+      grosorBorde * 0.2,
+      0,
+      Math.PI * 2,
+    );
     ctx.fill();
   });
 
   // Textos de las secciones (radiales, desde el borde hacia el centro)
   const tamanoLetra = radio * CONFIG.rueda.tamanoTexto;
-  const radioCentro = radio * 0.26;               // radio del círculo central (en CSS mide 26% del diámetro)
+  const radioCentro = radio * 0.26; // radio del círculo central (en CSS mide 26% del diámetro)
   const anchoMax = radioSecciones - radioCentro - tamanoLetra; // espacio disponible
   ctx.fillStyle = c.textoSecciones;
   ctx.font = `800 ${tamanoLetra}px ${CONFIG.fuente}`;
@@ -271,8 +322,8 @@ function partirTexto(texto, anchoMax) {
 
 /* ---------- Estado de la rueda ---------- */
 const estado = {
-  rotacion: 0,       // rotación actual de la rueda en grados (sentido horario)
-  girando: false,    // true mientras la rueda está en movimiento (bloquea nuevos giros)
+  rotacion: 0, // rotación actual de la rueda en grados (sentido horario)
+  girando: false, // true mientras la rueda está en movimiento (bloquea nuevos giros)
   arrastrando: false, // true mientras se arrastra la rueda con el mouse o el dedo
 };
 
@@ -289,8 +340,8 @@ function seccionBajoPuntero() {
   return Math.floor(mod(-estado.rotacion, 360) / angulo);
 }
 
-let seccionAnterior = 0;     // para detectar cuándo cruza un separador
-let rotacionAnterior = 0;    // para saber hacia dónde gira
+let seccionAnterior = 0; // para detectar cuándo cruza un separador
+let rotacionAnterior = 0; // para saber hacia dónde gira
 
 function aplicarRotacion() {
   canvas.style.transform = `rotate(${estado.rotacion}deg)`;
@@ -300,7 +351,9 @@ function aplicarRotacion() {
   const actual = seccionBajoPuntero();
   if (actual !== seccionAnterior) {
     reproducirTic();
-    golpearPuntero(estado.rotacion >= rotacionAnterior ? "horario" : "antihorario");
+    golpearPuntero(
+      estado.rotacion >= rotacionAnterior ? "horario" : "antihorario",
+    );
     seccionAnterior = actual;
   }
   rotacionAnterior = estado.rotacion;
@@ -317,11 +370,11 @@ function golpearPuntero(direccion) {
 /* ---------- Sonidos ---------- */
 const btnSonido = document.getElementById("btn-sonido");
 let sonidoActivo = CONFIG.sonidos.activadoAlInicio;
-let contextoAudio = null;     // Web Audio API (se crea con el primer toque/clic)
+let contextoAudio = null; // Web Audio API (se crea con el primer toque/clic)
 let ticConArchivo = !!CONFIG.sonidos.tick;
-const poolTic = [];           // varias copias del tic para que puedan solaparse
+const poolTic = []; // varias copias del tic para que puedan solaparse
 let indicePoolTic = 0;
-const sonidosResultado = {};  // archivo → elemento <audio> precargado
+const sonidosResultado = {}; // archivo → elemento <audio> precargado
 let sonidoSonando = null;
 
 function prepararSonidos() {
@@ -330,7 +383,9 @@ function prepararSonidos() {
     for (let i = 0; i < 6; i++) {
       const audio = new Audio(CONFIG.sonidos.tick);
       audio.preload = "auto";
-      audio.addEventListener("error", () => { ticConArchivo = false; });
+      audio.addEventListener("error", () => {
+        ticConArchivo = false;
+      });
       poolTic.push(audio);
     }
   }
@@ -351,7 +406,8 @@ function activarAudio() {
     const Contexto = window.AudioContext || window.webkitAudioContext;
     if (Contexto) contextoAudio = new Contexto();
   }
-  if (contextoAudio && contextoAudio.state === "suspended") contextoAudio.resume();
+  if (contextoAudio && contextoAudio.state === "suspended")
+    contextoAudio.resume();
 }
 
 function reproducirTic() {
@@ -408,7 +464,9 @@ function alternarSonido() {
 
 function actualizarBotonSonido() {
   btnSonido.textContent = sonidoActivo ? "🔊" : "🔇";
-  const etiqueta = sonidoActivo ? CONFIG.etiquetas.silenciar : CONFIG.etiquetas.activarSonido;
+  const etiqueta = sonidoActivo
+    ? CONFIG.etiquetas.silenciar
+    : CONFIG.etiquetas.activarSonido;
   btnSonido.setAttribute("aria-label", etiqueta);
   btnSonido.title = etiqueta;
 }
@@ -417,8 +475,10 @@ function actualizarBotonSonido() {
 const btnFullscreen = document.getElementById("btn-fullscreen");
 
 // Iconos: flechas hacia afuera (entrar) y hacia adentro (salir)
-const ICONO_ENTRAR = '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>';
-const ICONO_SALIR = '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/></svg>';
+const ICONO_ENTRAR =
+  '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>';
+const ICONO_SALIR =
+  '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/></svg>';
 
 function elementoFullscreen() {
   return document.fullscreenElement || document.webkitFullscreenElement || null;
@@ -438,7 +498,9 @@ function alternarFullscreen() {
 function actualizarBotonFullscreen() {
   const activo = !!elementoFullscreen();
   btnFullscreen.innerHTML = activo ? ICONO_SALIR : ICONO_ENTRAR;
-  const etiqueta = activo ? CONFIG.etiquetas.salirPantallaCompleta : CONFIG.etiquetas.pantallaCompleta;
+  const etiqueta = activo
+    ? CONFIG.etiquetas.salirPantallaCompleta
+    : CONFIG.etiquetas.pantallaCompleta;
   btnFullscreen.setAttribute("aria-label", etiqueta);
   btnFullscreen.title = etiqueta;
 }
@@ -453,7 +515,10 @@ function prepararFullscreen() {
   btnFullscreen.addEventListener("click", alternarFullscreen);
   // También se actualiza si se sale con Esc o F11
   document.addEventListener("fullscreenchange", actualizarBotonFullscreen);
-  document.addEventListener("webkitfullscreenchange", actualizarBotonFullscreen);
+  document.addEventListener(
+    "webkitfullscreenchange",
+    actualizarBotonFullscreen,
+  );
   actualizarBotonFullscreen();
 }
 
@@ -475,11 +540,13 @@ function elegirSeccion() {
 function probarPesos(veces = 10000) {
   const conteo = CONFIG.secciones.map(() => 0);
   for (let i = 0; i < veces; i++) conteo[elegirSeccion()]++;
-  console.table(CONFIG.secciones.map((s, i) => ({
-    seccion: s.texto,
-    peso: s.peso,
-    porcentaje: ((conteo[i] / veces) * 100).toFixed(1) + "%",
-  })));
+  console.table(
+    CONFIG.secciones.map((s, i) => ({
+      seccion: s.texto,
+      peso: s.peso,
+      porcentaje: ((conteo[i] / veces) * 100).toFixed(1) + "%",
+    })),
+  );
 }
 
 /* ---------- Cálculo del ángulo final ---------- */
@@ -496,7 +563,8 @@ function calcularGiro(indice, vueltas, direccion = 1) {
   const objetivo = mod(-dentro, 360);
   const actual = mod(estado.rotacion, 360);
 
-  const resto = direccion === 1 ? mod(objetivo - actual, 360) : mod(actual - objetivo, 360);
+  const resto =
+    direccion === 1 ? mod(objetivo - actual, 360) : mod(actual - objetivo, 360);
   return direccion * (resto + vueltas * 360);
 }
 
@@ -534,7 +602,8 @@ function girar() {
 
   const indice = elegirSeccion(); // el resultado se decide antes de girar
   const { vueltasMin, vueltasMax, duracion } = CONFIG.giro;
-  const vueltas = vueltasMin + Math.floor(Math.random() * (vueltasMax - vueltasMin + 1));
+  const vueltas =
+    vueltasMin + Math.floor(Math.random() * (vueltasMax - vueltasMin + 1));
   const grados = calcularGiro(indice, vueltas);
 
   animarGiro(grados, duracion, () => terminarGiro(indice));
@@ -553,7 +622,11 @@ function anguloPuntero(evento) {
   const caja = zonaRueda.getBoundingClientRect();
   const x = evento.clientX - (caja.left + caja.width / 2);
   const y = evento.clientY - (caja.top + caja.height / 2);
-  return { angulo: (Math.atan2(y, x) * 180) / Math.PI, distancia: Math.hypot(x, y), radio: caja.width / 2 };
+  return {
+    angulo: (Math.atan2(y, x) * 180) / Math.PI,
+    distancia: Math.hypot(x, y),
+    radio: caja.width / 2,
+  };
 }
 
 function guardarMuestra() {
@@ -595,7 +668,8 @@ function soltarArrastre() {
   const primera = muestras[0];
   const ultima = muestras[muestras.length - 1];
   const dt = ultima.t - primera.t;
-  const velocidad = dt > 0 ? ((ultima.rotacion - primera.rotacion) / dt) * 1000 : 0;
+  const velocidad =
+    dt > 0 ? ((ultima.rotacion - primera.rotacion) / dt) * 1000 : 0;
 
   const a = CONFIG.arrastre;
   if (Math.abs(velocidad) < a.velocidadMinima) return; // movimiento suave: no gira
@@ -604,14 +678,20 @@ function soltarArrastre() {
   const direccion = Math.sign(velocidad);
   const rapidez = Math.min(Math.abs(velocidad), a.velocidadMaxima);
   // Fuerza de 0 (deslizamiento mínimo) a 1 (máximo)
-  const fuerza = (rapidez - a.velocidadMinima) / (a.velocidadMaxima - a.velocidadMinima);
-  const vueltas = Math.round(a.vueltasMin + fuerza * (a.vueltasMax - a.vueltasMin));
+  const fuerza =
+    (rapidez - a.velocidadMinima) / (a.velocidadMaxima - a.velocidadMinima);
+  const vueltas = Math.round(
+    a.vueltasMin + fuerza * (a.vueltasMax - a.vueltasMin),
+  );
 
   const indice = elegirSeccion(); // el resultado sigue respetando los pesos
   const grados = calcularGiro(indice, vueltas, direccion);
   // Duración elegida para que la rueda arranque a la misma velocidad con la
   // que se soltó (la curva easeOutQuart empieza a 4 × grados / duración)
-  const duracion = Math.min(a.duracionMax, Math.max(a.duracionMin, (4 * Math.abs(grados)) / rapidez * 1000));
+  const duracion = Math.min(
+    a.duracionMax,
+    Math.max(a.duracionMin, ((4 * Math.abs(grados)) / rapidez) * 1000),
+  );
 
   animarGiro(grados, duracion, () => terminarGiro(indice));
 }
@@ -637,10 +717,18 @@ const btnCerrar = document.getElementById("btn-cerrar");
 function mostrarPopup(seccion) {
   const p = CONFIG.popup;
   const esPremio = seccion.tipo === "premio";
-  document.getElementById("popup-icono").textContent = esPremio ? p.iconoPremio : p.iconoIntento;
-  document.getElementById("popup-titulo").textContent = esPremio ? p.tituloPremio : p.tituloIntento;
-  document.getElementById("popup-texto").textContent = esPremio ? p.textoPremio : p.textoIntento;
-  document.getElementById("popup-premio").textContent = esPremio ? seccion.texto : "";
+  document.getElementById("popup-icono").textContent = esPremio
+    ? p.iconoPremio
+    : p.iconoIntento;
+  document.getElementById("popup-titulo").textContent = esPremio
+    ? p.tituloPremio
+    : p.tituloIntento;
+  document.getElementById("popup-texto").textContent = esPremio
+    ? p.textoPremio
+    : p.textoIntento;
+  document.getElementById("popup-premio").textContent = esPremio
+    ? seccion.texto
+    : "";
   popup.hidden = false;
   // preventScroll: en celulares, enfocar un botón puede desplazar la página
   btnCerrar.focus({ preventScroll: true });
@@ -650,21 +738,43 @@ function cerrarPopup() {
   if (popup.hidden) return;
   popup.hidden = true;
   detenerSonidoResultado();
-  bloquear(false);      // lista para el siguiente participante
+  bloquear(false); // lista para el siguiente participante
   btnGirar.focus({ preventScroll: true });
 }
 
 /* ---------- Confeti (librería canvas-confetti) ---------- */
 function lanzarConfeti() {
   if (typeof confetti !== "function") return; // sin internet: se omite
-  const base = { colors: CONFIG.colores.confeti, zIndex: 1000, disableForReducedMotion: true };
+  const base = {
+    colors: CONFIG.colores.confeti,
+    zIndex: 1000,
+    disableForReducedMotion: true,
+  };
 
   // Explosión central y dos ráfagas laterales durante ~1.5 s
-  confetti({ ...base, particleCount: 150, spread: 100, startVelocity: 45, origin: { y: 0.6 } });
+  confetti({
+    ...base,
+    particleCount: 150,
+    spread: 100,
+    startVelocity: 45,
+    origin: { y: 0.6 },
+  });
   const fin = performance.now() + 1500;
   (function rafagas() {
-    confetti({ ...base, particleCount: 4, angle: 60, spread: 55, origin: { x: 0, y: 0.7 } });
-    confetti({ ...base, particleCount: 4, angle: 120, spread: 55, origin: { x: 1, y: 0.7 } });
+    confetti({
+      ...base,
+      particleCount: 4,
+      angle: 60,
+      spread: 55,
+      origin: { x: 0, y: 0.7 },
+    });
+    confetti({
+      ...base,
+      particleCount: 4,
+      angle: 120,
+      spread: 55,
+      origin: { x: 1, y: 0.7 },
+    });
     if (performance.now() < fin) requestAnimationFrame(rafagas);
   })();
 }
@@ -679,8 +789,12 @@ prepararFullscreen();
 btnCerrar.textContent = CONFIG.popup.textoBotonCerrar;
 btnCerrar.addEventListener("click", cerrarPopup);
 // Cerrar con clic fuera de la caja o con la tecla Esc
-popup.addEventListener("click", (e) => { if (e.target === popup) cerrarPopup(); });
-document.addEventListener("keydown", (e) => { if (e.key === "Escape") cerrarPopup(); });
+popup.addEventListener("click", (e) => {
+  if (e.target === popup) cerrarPopup();
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") cerrarPopup();
+});
 // El audio se habilita con la primera interacción (requisito de los navegadores)
 document.addEventListener("pointerdown", activarAudio);
 document.addEventListener("keydown", activarAudio);

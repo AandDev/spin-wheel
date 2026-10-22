@@ -1,10 +1,13 @@
 Imágenes de la ruleta (las rutas se configuran en CONFIG.logos, en js/script.js):
 
-- logo-rueda.svg   → logo del círculo central de la rueda
-                     (idealmente cuadrado y con fondo transparente)
-- logo-nav.svg     → logo de la barra de navegación
-                     (la barra es oscura: el logo debe verse bien sobre fondo oscuro)
+- logo-rueda.png   → logo del círculo central de la rueda
+                     (idealmente cuadrado; las esquinas se recortan en círculo)
+- logo-nav.png     → logo de la barra de navegación
+                     (con fondo transparente se integra mejor con el color de la barra)
 - logo-favicon.png → icono de la pestaña del navegador
+
+Usa imágenes de buena resolución (al menos 2-3 veces el tamaño en que se ven),
+sobre todo para pantallas grandes: la rueda puede medir más de 1000 px.
 
 Puedes usar .svg, .png, .jpg o .webp. Si cambias el nombre o el formato
 de un archivo, actualiza la ruta correspondiente en CONFIG.logos.

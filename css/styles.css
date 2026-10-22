@@ -226,11 +226,12 @@ body {
     0 4px 16px rgba(0, 0, 0, 0.35);
   z-index: 2;
   pointer-events: none;
+  overflow: hidden; /* recorta las esquinas de logos cuadrados con fondo */
 }
 
 .rueda__logo {
-  width: 72%;
-  height: 72%;
+  width: 60%;
+  height: 60%;
   object-fit: contain;
 }
 
